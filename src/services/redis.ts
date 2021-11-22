@@ -2,18 +2,18 @@ import { pubsubEvents } from '../constants/pubsub-events';
 import SegmentServices from './segment';
 // import logger from 'pino';
 
-const redisEventsInit = (subscriber) => {
-  subscriber.subscribe("segment");
+const redisEventsInit = (subscriber: any) => {
+  subscriber.subscribe('segment');
 
-  subscriber.on('message', (channel, message) => {
+  subscriber.on('message', (channel: string, message: string) => {
     const messageObj = JSON.parse(message);
 
     sendDataToSegment(messageObj);
   });
-}
+};
 
 // call segment tracking APIs
-function sendDataToSegment(message) {
+function sendDataToSegment(message: { event: string, body: any }) {
   const { event, body } = message;
 
   switch(event) {
