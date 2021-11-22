@@ -1,9 +1,8 @@
 const corsConfig = {
-    credentials: true,
-    methods: '*',
-    allowedHeaders: '*',
-    origin: '*'
-  };
+  credentials: true,
+  methods: '*',
+  allowedHeaders: '*',
+  origin: '*'
+};
   
-  export default corsConfig;
-  
+export default corsConfig;

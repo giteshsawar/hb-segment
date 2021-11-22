@@ -1,5 +1,5 @@
-import { join } from "path";
-import { config } from "dotenv";
+import { join } from 'path';
+import { config } from 'dotenv';
 
 export interface EnvVariables {
   port: number;
@@ -9,8 +9,8 @@ export interface EnvVariables {
 
 function loadEnv(): void {
   const { NODE_ENV } = process.env;
-  if (NODE_ENV === "development") {
-    const path = join(process.cwd(), ".env.development");
+  if (NODE_ENV === 'development') {
+    const path = join(process.cwd(), '.env.development');
     config({ path });
   }
 }
@@ -20,9 +20,9 @@ function getEnvVariables(): EnvVariables {
   const { PORT, GOOGLE_PROJECT_ID, GOOGLE_KEY } = process.env;
 
   return {
-    port: parseInt(PORT) || 8080,
-    googleProjectId: GOOGLE_PROJECT_ID,
-    googleKey: GOOGLE_KEY,
+    port: parseInt(PORT || '') || 8080,
+    googleProjectId: GOOGLE_PROJECT_ID || '',
+    googleKey: GOOGLE_KEY || '',
   };
 }
 
